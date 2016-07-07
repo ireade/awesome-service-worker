@@ -55,7 +55,7 @@ For up-to-date details on support see -
 
 
 
-## Polyfills
+### Polyfills
 
 - [Promise Polyfill](https://github.com/taylorhakes/promise-polyfill)
 - [Cache Polyfill](https://github.com/dominiccooney/cache-polyfill) (kinda obsolete now)
