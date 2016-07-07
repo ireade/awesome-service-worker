@@ -1,6 +1,6 @@
 # Awesome Service Workers 📡
 
-> Useful resources for working with Service Workers
+> A curated list of useful resources for Service Workers
 
 > Service Workers are the backbone for creating [offline-first](http://offlinefirst.org/) applications. They sit, conceptually, between the network and the document, giving them the ability to intercept the network requests and provide content for documents, even while offline.
 
@@ -9,14 +9,14 @@ Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
 ## Table of Contents
 
 - Specification
-- Support
+- Support & Polyfill
 - How Tos
 - Articles
 - Videos
 - Talks
 - Tools
 - Showcase
-- Contributing
+- [Contributing](CONTRIBUTING.md)
 - Licence
 
 
@@ -36,45 +36,50 @@ The solution -
 
 ## Support
 
-![Support Table (Last updated 7th July 2016)](support.png)
+[ ![Support Table](support.png) ](http://caniuse.com/#feat=serviceworkers)
 
+*Last updated 7th July 2016*
 
-For up to date details on support see -
+For up-to-date details on support see -
 
 - [Is Service Worker Ready?](https://jakearchibald.github.io/isserviceworkerready/)
 - [caniuse.com](http://caniuse.com/#feat=serviceworkers)
 
+## Polyfills
+
+- Here
 
 
-## How Tos
+
+## The API
 
 ### Register a Service Worker
 
-
-```
+```javascript
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw-test/sw.js', { scope: '/sw-test/' }).then(function(reg) {
+  navigator.serviceWorker.register('/sw.js', { scope: './' }).then(function(reg) {
     // registration worked
-    console.log('Registration succeeded. Scope is ' + reg.scope);
-  }).catch(function(error) {
+    console.log('Registration succeeded', reg);
+  }).catch(function(err) {
     // registration failed
-    console.log('Registration failed with ' + error);
+    console.log('Registration failed', err);
   });
 }
 ```
 
-(From [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers))
 
 
-### Install a Service Worker
 
-```
-self.addEventListener('install', function() {
-	event.waitUntil(
-		// Promise
-	)
-});
-```
+### Service Worker Events
+
+Event | Description
+------|--------------
+`install` | Dispatched when the service worker's installing worker changes
+`activate` | Dispatched when the service worker's active worker changes
+`fetch` | Dispatched when the document attempts a network (fetch) request
+`message` | Dispatched when the service worker receives a message, e.g. from the main document via the postMessage API
+
+*[See W3C Spec](https://www.w3.org/TR/service-workers/#execution-context-events)*
 
 
 
@@ -83,17 +88,19 @@ self.addEventListener('install', function() {
 
 - [Introduction to Service Worker](http://www.html5rocks.com/en/tutorials/service-worker/introduction/) by Matt Guant (1st December 2014)
 - [Using Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers) by MDN
+- [Service Workers Explained](https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md) by slightlyoff
+- [Getting Started with Service Workers](https://www.sitepoint.com/getting-started-with-service-workers/) by Ritesh Kumar (19th November 2015)
 
 
 ## Videos
 
-- [How to Setup a Basic Service Worker (with Caching)](https://www.youtube.com/watch?v=BfL3pprhnms) by Ire Aderinokun ()
+- [How to Setup a Basic Service Worker (with Caching)](https://www.youtube.com/watch?v=BfL3pprhnms) by Ire Aderinokun (9th May 2016)
 
 
 ## Talks
 
 
-- [Progressive Web Apps Summit 2016 (Playlist)](https://www.youtube.com/playlist?list=PLNYkxOF6rcIAWWNR_Q6eLPhsyx6VvYjVb)
+- [Progressive Web Apps Summit 2016 (Full Playlist)](https://www.youtube.com/playlist?list=PLNYkxOF6rcIAWWNR_Q6eLPhsyx6VvYjVb)
 
 
 ## Tools
@@ -109,11 +116,11 @@ self.addEventListener('install', function() {
 - 
 
 
-## Contributing
 
 
 ## Licence
 
+Licensed under the [Creative Commons CC0 License](https://creativecommons.org/publicdomain/zero/1.0/).
 
 
 
