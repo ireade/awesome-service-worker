@@ -1,6 +1,6 @@
-# Awesome Service Workers 📡
+# Awesome Service Worker 📡
 
-> A curated list of useful resources for Service Workers
+> A curated list of useful resources for Service Worker
 
 > Service Workers are the backbone for creating [offline-first](http://offlinefirst.org/) applications. They sit, conceptually, between the network and the document, giving them the ability to intercept the network requests and provide content for documents, even while offline.
 
