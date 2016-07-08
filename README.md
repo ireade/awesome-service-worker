@@ -10,7 +10,6 @@ Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
 
 - [Specification](#specification)
 - [Support](#support)
-    - [Polyfills](#polyfills)
 - [The API](#the-api)
     - [Registering a Service Worker](#registering-a-service-worker)
     - [The Service Worker Lifecycle](#the-service-worker-lifecycle)
@@ -19,6 +18,7 @@ Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
 - [Videos](#videos)
 - [Talks](#talks)
 - [Tools](#tools)
+    - [Chrome Dev Tools](#chrome-dev-tools)
 - [Showcase](#showcase)
 - [Contributing](CONTRIBUTING.md)
 - [Licence](#licence)
@@ -56,22 +56,15 @@ For up-to-date details on support see -
 
 
 
-### Polyfills
-
-- [Promise Polyfill](https://github.com/taylorhakes/promise-polyfill)
-- [Cache Polyfill](https://github.com/dominiccooney/cache-polyfill) (kinda obsolete now)
-
-
-
 ## The API
 
 ### Registering a Service Worker
 
-Assuming the Service Worker file (called `serviceworker.js`) is located in the root directory.
+Assuming the Service Worker file (called `service-worker.js`) is located in the root directory.
 
 ```javascript
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register("/serviceworker.js")
+  navigator.serviceWorker.register("/service-worker.js")
     .then(function(registration) {
       console.log('Registration succeeded!', registration);
     })
@@ -98,6 +91,9 @@ Redundant | When a new Service Worker has taken control of the page, the previou
 
 *[See W3C Spec](https://www.w3.org/TR/service-workers/#service-worker-state)*
 
+The Installing, Waiting, Activated, and Redundant stages can be viewed in your DevTools
+
+![Lifecycle](lifecycle.png)
 
 
 
@@ -119,11 +115,12 @@ Event | Description
 
 ## Articles
 
-- <mark>[Introduction to Service Worker](http://www.html5rocks.com/en/tutorials/service-worker/introduction/)</mark> by Matt Guant (1st December 2014)
+- [Introduction to Service Worker](http://www.html5rocks.com/en/tutorials/service-worker/introduction/) by Matt Guant (1st December 2014)
 - [Using Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers) by MDN
 - [Service Workers Explained](https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md) by slightlyoff
 - [Getting Started with Service Workers](https://www.sitepoint.com/getting-started-with-service-workers/) by Ritesh Kumar (19th November 2015)
 - [Making a Service Worker](https://www.smashingmagazine.com/2016/02/making-a-service-worker/) by Lyza Danger Gardner on SitePoint (1st February 2016)
+- [The Offline Cookbook](https://jakearchibald.com/2014/offline-cookbook/) by Jake Archibald (9th December 2014)
 
 
 ## Videos
@@ -143,10 +140,22 @@ Event | Description
 - [Lighthouse](https://github.com/GoogleChrome/lighthouse)
 
 
+### Chrome Dev Tools
+
+
+The Service Worker for the current page can be viewed at **Resources > Service Workers**
+
+![](chrome.png)
+
+You can also go to `chrome://serviceworker-internals/` to see all registered Service Workers
+
+
+
+
 
 ## Showcase
 
-- **Service Worker Example Scripts** ( [Source](https://github.com/lyzadanger/serviceworker-example) ) - Various examples
+- **Service Worker Example Scripts** ( [Source](https://github.com/lyzadanger/serviceworker-example) ) - Various examples of things you can do with Service Workers (for example, precache, fetch handling, and versioning). 
 
 
 
