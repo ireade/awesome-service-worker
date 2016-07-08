@@ -10,10 +10,11 @@ Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
 
 - [Specification](#specification)
 - [Support](#support)
-	- [Polyfills](#polyfills)
+    - [Polyfills](#polyfills)
 - [The API](#the-api)
-	- [Registering a Service Worker](#registering-a-service-worker)
-	- [Service Worker Events](#service-worker-events)
+    - [Registering a Service Worker](#registering-a-service-worker)
+    - [The Service Worker Lifecycle](#the-service-worker-lifecycle)
+    - [Service Worker Events](#service-worker-events)
 - [Articles](articles)
 - [Videos](#videos)
 - [Talks](#talks)
@@ -66,24 +67,43 @@ For up-to-date details on support see -
 
 ### Registering a Service Worker
 
-Assuming the Service Worker file (called `sw.js`) is located in the root directory.
+Assuming the Service Worker file (called `serviceworker.js`) is located in the root directory.
 
 ```javascript
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js', { scope: './' }).then(function(reg) {
-    // registration worked
-    console.log('Registration succeeded', reg);
-  }).catch(function(err) {
-    // registration failed
-    console.log('Registration failed', err);
-  });
+  navigator.serviceWorker.register("/serviceworker.js")
+    .then(function(registration) {
+      console.log('Registration succeeded!', registration);
+    })
+    .catch(function(err) {
+      console.log('Registration failed!', err);
+    });
 }
 ```
+
+*[See W3C Spec](https://www.w3.org/TR/service-workers/#document-context)*
+
+### The Service Worker Lifecycle
+
+The Service Worker can be in one of the following states.
+
+State | Description
+------|-------------
+Parsed | The Service Worker is downloaded and aprsed when the user first visits the page
+Installing | If the parsed file is new (or a different version of a previous file), installation is attempted
+Installed / Waiting | The Service Worker is installed and waiting to be activated
+Activating | The Service Worker is in the process of being activated
+Activated | The Service Worker is considered the active worker and has control of the document
+Redundant | When a new Service Worker has taken control of the page, the previous one is held as redundant
+
+*[See W3C Spec](https://www.w3.org/TR/service-workers/#service-worker-state)*
+
+
 
 
 ### Service Worker Events
 
-The Service Worker is event driven. There are four events it can listen fo.
+The Service Worker is event driven. There are four events it can listen for.
 
 Event | Description
 ------|--------------
@@ -99,10 +119,11 @@ Event | Description
 
 ## Articles
 
-- [Introduction to Service Worker](http://www.html5rocks.com/en/tutorials/service-worker/introduction/) by Matt Guant (1st December 2014)
+- <mark>[Introduction to Service Worker](http://www.html5rocks.com/en/tutorials/service-worker/introduction/)</mark> by Matt Guant (1st December 2014)
 - [Using Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers) by MDN
 - [Service Workers Explained](https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md) by slightlyoff
 - [Getting Started with Service Workers](https://www.sitepoint.com/getting-started-with-service-workers/) by Ritesh Kumar (19th November 2015)
+- [Making a Service Worker](https://www.smashingmagazine.com/2016/02/making-a-service-worker/) by Lyza Danger Gardner on SitePoint (1st February 2016)
 
 
 ## Videos
@@ -125,8 +146,7 @@ Event | Description
 
 ## Showcase
 
-Any apps that use service worker?
-
+- **Service Worker Example Scripts** ( [Source](https://github.com/lyzadanger/serviceworker-example) ) - Various examples
 
 
 
