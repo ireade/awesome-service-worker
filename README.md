@@ -91,9 +91,6 @@ Redundant | When a new Service Worker has taken control of the page, the previou
 
 *[See W3C Spec](https://www.w3.org/TR/service-workers/#service-worker-state)*
 
-The Installing, Waiting, Activated, and Redundant stages can be viewed in your DevTools
-
-![Lifecycle](lifecycle.png)
 
 
 
